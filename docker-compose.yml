@@ -1,0 +1,8 @@
+version: '2'
+services:
+  exim:
+    build:
+      context: docker
+      args:
+          branch: exim-4_87
+    restart: "always"

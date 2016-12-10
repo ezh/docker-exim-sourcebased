@@ -1,0 +1,27 @@
+version: '2'
+services:
+  exim:
+    build:
+      context: docker
+      args:
+          branch: exim-4_87
+    networks:
+      local:
+        ipv4_address: 10.0.0.1
+    restart: "always"
+    volumes:
+      - "exim-config:/etc/exim"
+      - "exim-spool:/var/spool/exim"
+volumes:
+  exim-config:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/exim/config
+      o: bind
+  exim-spool:
+    driver: local
+    driver_opts:
+      type: none
+      device: /data/exim/spool
+      o: bind
