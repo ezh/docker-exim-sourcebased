@@ -1,0 +1,24 @@
+language: bash
+
+services:
+  - docker
+
+env:
+  DOCKER_VERSION: 1.12.3
+  DOCKER_COMPOSE_VERSION: 1.8.1
+
+before-install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+  # check docker versions
+  - docker version
+  - docker-compose version<Paste>
+
+script:
+  - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
+  - sleep 5
+  - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q14m/" && echo TEST PASSED' | grep PASSED
+  - docker-compose down
+
