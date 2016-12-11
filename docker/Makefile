@@ -304,14 +304,14 @@ LOOKUP_DNSDB=yes
 # LOOKUP_CDB=yes
 LOOKUP_DSEARCH=yes
 # LOOKUP_IBASE=yes
-# LOOKUP_LDAP=yes
-# LOOKUP_MYSQL=yes
+LOOKUP_LDAP=yes
+LOOKUP_MYSQL=yes
 # LOOKUP_NIS=yes
 # LOOKUP_NISPLUS=yes
 # LOOKUP_ORACLE=yes
 LOOKUP_PASSWD=yes
-# LOOKUP_PGSQL=yes
-# LOOKUP_REDIS=yes
+LOOKUP_PGSQL=yes
+LOOKUP_REDIS=yes
 LOOKUP_SQLITE=yes
 LOOKUP_SQLITE_PC=sqlite3
 # LOOKUP_WHOSON=yes
@@ -334,7 +334,7 @@ LOOKUP_NWILDLSEARCH=yes
 # with Solaris 7 onwards. Uncomment whichever of these you are using.
 
 # LDAP_LIB_TYPE=OPENLDAP1
-# LDAP_LIB_TYPE=OPENLDAP2
+LDAP_LIB_TYPE=OPENLDAP2
 # LDAP_LIB_TYPE=NETSCAPE
 # LDAP_LIB_TYPE=SOLARIS
 
@@ -369,9 +369,9 @@ PCRE_CONFIG=yes
 #
 # You do not need to use this for any lookup information added via pkg-config.
 
-# LOOKUP_INCLUDE=-I /usr/local/ldap/include -I /usr/local/mysql/include -I /usr/local/pgsql/include
+LOOKUP_INCLUDE=-I /usr/include/ldap -I /usr/include/mysql -I`pg_config --includedir`
 # LOOKUP_LIBS=-L/usr/local/lib -lldap -llber -lmysqlclient -lpq -lgds -lsqlite3
-LOOKUP_LIBS=-L/usr/local/lib -lsqlite3 -llber -lspf2
+LOOKUP_LIBS=-L/usr/local/lib -lldap -lmysqlclient -lpq -lsqlite3 -lhiredis -llber -lspf2
 
 
 #------------------------------------------------------------------------------

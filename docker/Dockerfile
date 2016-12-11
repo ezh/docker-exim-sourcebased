@@ -2,9 +2,10 @@ FROM buildpack-deps:jessie-curl
 
 RUN set -x && \
     apt-get update -y && apt-get -y install apt-utils && \
-    apt-get -y install git ca-certificates wget spf-tools-perl file automake libsqlite3-dev sqlite3 \
-        libpcre3-dev build-essential libdb-dev libopendmarc-dev libmysqlclient-dev libspf2-dev libsasl2-dev \
-        libldap2-dev libdkim-dev libgnutls28-dev pkg-config libidn11-dev libpam-dev libperl-dev && \
+    apt-get -y install git ca-certificates wget spf-tools-perl file automake \
+        libsqlite3-dev sqlite3 libhiredis-dev libpq-dev libldap2-dev libmysqlclient-dev \
+        libpcre3-dev build-essential libdb-dev libopendmarc-dev libspf2-dev libsasl2-dev \
+        libdkim-dev libgnutls28-dev pkg-config libidn11-dev libpam-dev libperl-dev && \
     apt-get clean && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /download/directory && \
     mkdir -p /etc/exim && \

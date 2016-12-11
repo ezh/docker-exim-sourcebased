@@ -27,7 +27,21 @@ Build parameters
 
 You may alter build parameters in docker/Makefile. Please look at docker/EDITME for example.
 
-Most notable aspects: `sqllite` (for greylisting, etc...), `perl`, `spf`, `srs`, `dmar`, `content scan`
+Most notable aspects:
+* databases
+ * `sqllite` (for greylisting, etc...),
+ * `mysql`
+ * `pgsql`
+ * `ldap2`
+ * `redis`
+* options
+ * `perl`
+ * `spf`
+ * `srs`
+ * `dmar`
+ * `content scan`
+ * `dkim`
+ * `dcc`
 
 ```
 BIN_DIRECTORY=/usr/bin
@@ -50,14 +64,20 @@ LOOKUP_DBM=yes
 LOOKUP_LSEARCH=yes
 LOOKUP_DNSDB=yes
 LOOKUP_DSEARCH=yes
+LOOKUP_LDAP=yes
+LOOKUP_MYSQL=yes
 LOOKUP_PASSWD=yes
+LOOKUP_PGSQL=yes
+LOOKUP_REDIS=yes
 LOOKUP_SQLITE=yes
 LOOKUP_SQLITE_PC=sqlite3
 LOOKUP_SPF=yes
 LOOKUP_WILDLSEARCH=yes
 LOOKUP_NWILDLSEARCH=yes
+LDAP_LIB_TYPE=OPENLDAP2
 PCRE_CONFIG=yes
-LOOKUP_LIBS=-L/usr/local/lib -lsqlite3 -llber -lspf2
+LOOKUP_INCLUDE=-I /usr/include/ldap -I /usr/include/mysql -I`pg_config --includedir`
+LOOKUP_LIBS=-L/usr/local/lib -lldap -lmysqlclient -lpq -lsqlite3 -lhiredis -llber -lspf2
 WITH_CONTENT_SCAN=yes
 EXPERIMENTAL_DCC=yes
 EXPERIMENTAL_SPF=yes
