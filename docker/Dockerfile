@@ -19,8 +19,9 @@ COPY Makefile /opt/exim/src/Local/
 COPY entrypoint.sh /
 
 ARG branch=master
+ARG user_id=798
 RUN set -x && \
-    useradd -r -s /bin/false exim && \
+    useradd -r -s /bin/false -u ${user_id} exim && \
     cd /opt/exim/ && git init . && git remote add -t \* -f origin https://github.com/exim/exim && \
     git checkout ${branch} && cd /opt/exim/src && make && make install && \
     rm -rf /opt/exim && \
