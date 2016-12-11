@@ -18,7 +18,7 @@ EXIM executed directly as PID 1 process with loggin `main` and `reject` log to `
 Arguments
 ---------
 
-You may set exim version via `branch` argument
+You may set exim version via `version` argument
 
 You may set UID for exim user via `user_id` argument
 

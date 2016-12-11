@@ -4,7 +4,7 @@ services:
     build:
       context: docker
       args:
-          branch: exim-4_87
+          version: exim-4_87
           user_id: 900
     networks:
       local:

@@ -19,6 +19,5 @@ before-install:
 script:
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
   - sleep 5
-  - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q14m/" && echo TEST PASSED' | grep PASSED
+  - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q15m/ {print \"TEST PASSED\"}"' | grep PASSED
   - docker-compose down
-
