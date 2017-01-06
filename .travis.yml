@@ -34,12 +34,9 @@ script:
   - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q15m/ {print \"TEST PASSED\"}"' | grep PASSED
   - docker-compose down
   - docker tag exim:latest $REPO
-  - docker tag exim:latest $REPO:$COMMIT
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-
+  - docker tag $REPO $REPO:$TAG
 
 after_success:
   - docker images
-  - docker push $REPO
+  - [[ "$TAG" != "latest" ]] && docker push $REPO
 
