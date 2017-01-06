@@ -4,7 +4,7 @@ language: java
 env:
   global:
     - "COMMIT=${TRAVIS_COMMIT::8}"
-    - "REPO=ezh1k/test"
+    - "REPO=ezh1k/exim"
     - "TAG=$(if [ \"$TRAVIS_BRANCH\" == \"master\" ]; then echo \"latest\"; else echo $TRAVIS_BRANCH ; fi)"
     - "DOCKER_VERSION=1.12.3"
     - "DOCKER_COMPOSE_VERSION=1.8.1"
