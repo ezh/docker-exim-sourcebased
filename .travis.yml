@@ -38,5 +38,5 @@ script:
 
 after_success:
   - docker images
-  - [[ "$TAG" != "latest" ]] && docker push $REPO
+  - [ "$TAG" != "latest" ] && docker push $REPO
 
