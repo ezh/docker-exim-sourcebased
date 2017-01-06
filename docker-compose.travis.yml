@@ -1,6 +1,5 @@
 version: '2'
 services:
   exim:
-    build:
-      image: exim
+    image: exim:latest
     restart: "no"
