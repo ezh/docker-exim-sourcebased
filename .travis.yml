@@ -24,11 +24,12 @@ before-install:
 before_script:
   - openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
   - sh .dockerhub
-  - echo REPO:$REPO COMMIT:$COMMIT TAG:$TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER
 
 script:
   - docker images
+  - echo build docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER && echo -en 'travis_fold:start:build\\r'
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
+  - echo -en 'travis_fold:end:build\\r'
   - sleep 5
   - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q15m/ {print \"TEST PASSED\"}"' | grep PASSED
   - docker-compose down
