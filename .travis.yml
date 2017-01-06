@@ -1,11 +1,16 @@
-language: bash
+sudo: required
+language: java
+
+env:
+  global:
+    - "COMMIT=${TRAVIS_COMMIT::8}"
+    - "REPO=ezh1k/test"
+    - "TAG=$(if [ \"$TRAVIS_BRANCH\" == \"master\" ]; then echo \"latest\"; else echo $TRAVIS_BRANCH ; fi)"
+    - "DOCKER_VERSION=1.12.3"
+    - "DOCKER_COMPOSE_VERSION=1.8.1"
 
 services:
   - docker
-
-env:
-  DOCKER_VERSION: 1.12.3
-  DOCKER_COMPOSE_VERSION: 1.8.1
 
 before-install:
   - sudo rm /usr/local/bin/docker-compose
@@ -16,8 +21,17 @@ before-install:
   - docker version
   - docker-compose version<Paste>
 
+before_script:
+  - openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
+  - sh .dockerhub
+  - echo REPO:$REPO COMMIT:$COMMIT TAG:$TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER
+
 script:
+  - docker images
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
   - sleep 5
   - docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q15m/ {print \"TEST PASSED\"}"' | grep PASSED
   - docker-compose down
+
+after_success:
+  - docker images
