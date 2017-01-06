@@ -27,7 +27,7 @@ before_script:
 
 script:
   - docker images
-  - echo -e "\e[033;1mBuild docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER\e[0m" && echo -en 'travis_fold:start:build\\r'
+  - echo -e "\e[0;33mBuild docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER\e[m" && echo -en 'travis_fold:start:build\\r'
   - docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
   - echo -en 'travis_fold:end:build\\r'
   - sleep 5
