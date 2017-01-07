@@ -27,6 +27,7 @@ before-install:
     sudo mv docker-compose /usr/local/bin
 
 before_script:
+  - echo -en 'travis_fold:start:prepare\\r'
   - |
     set -e
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
@@ -34,24 +35,27 @@ before_script:
     # check docker versions
     docker version
     docker-compose version
+  - echo -en 'travis_fold:start:prepare\\r'
 
 script:
+  - echo -e "\e[0;33mBuild docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG GIT_TAG:$GIT_TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER\e[m" && echo -en 'travis_fold:start:build\\r'
   - |
     set -e
     docker images
-    echo -e "\e[0;33mBuild docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG GIT_TAG:$GIT_TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER\e[m" && echo -en 'travis_fold:start:build\\r'
     docker-compose -f docker-compose.yml -f docker-compose.travis.yml up -d
-    echo -en 'travis_fold:end:build\\r'
     sleep 5
     docker-compose exec exim /bin/bash -c 'ps aux | awk "/^exim.*q15m/ {print \"TEST PASSED\"}"' | grep PASSED
     docker-compose down
     docker tag exim:latest $REPO
     docker tag $REPO $REPO:$TAG
+  - echo -en 'travis_fold:end:build\\r'
 
 after_success:
+  - echo -en 'travis_fold:start:publish\\r'
   - |
     set -e
     docker images
     [[ "$TAG" != "latest" ]] && docker push $REPO
     echo Success
+  - echo -en 'travis_fold:start:publish\\r'
 
