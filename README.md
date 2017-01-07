@@ -15,7 +15,7 @@ Image is based on `debian/jessie`, the same as an official Jenkis docker contain
 Execution
 ---------
 
-EXIM executed directly as PID 1 process with loggin `main` and `reject` log to `STDOUT`, and panic log to `STDERR`.
+EXIM executed directly as PID 1 process with logging `main` and `reject` log to `STDOUT`, and panic log to `STDERR`.
 
 
 Arguments
