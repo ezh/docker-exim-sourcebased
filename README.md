@@ -1,4 +1,4 @@
-docker-exim-sourcebased [![Build Status](https://travis-ci.org/ezh/docker-exim-sourcebased.png?branch=master)](https://travis-ci.org/ezh/docker-exim-sourcebased)
+docker-exim-sourcebased [![Build Status](https://travis-ci.org/ezh/docker-exim-sourcebased.png?branch=master)](https://travis-ci.org/ezh/docker-exim-sourcebased) [![Pulls](https://img.shields.io/docker/pulls/ezh1k/exim.svg)](https://hub.docker.com/r/ezh1k/exim/) [![Releases](https://img.shields.io/github/release/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/releases) [![License](https://img.shields.io/github/license/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/blob/master/LICENSE) 
 =======================
 
 Docker compose source based exim SOHO configuration
@@ -122,3 +122,8 @@ USE_READLINE=yes
 WITH_CONTENT_SCAN=yes
 ZCAT_COMMAND=/usr/bin/zcat
 ```
+
+Copyright
+---------
+
+Copyright © 2017 Alexey B. Aksenov/Ezh. All rights reserved.
