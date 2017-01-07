@@ -27,7 +27,7 @@ before-install:
     sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - echo -en 'travis_fold:start:prepare\\r'
+  - echo "Prepare environment" && echo -en 'travis_fold:start:prepare\\r'
   - |
     set -e
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
@@ -51,7 +51,7 @@ script:
   - echo -en 'travis_fold:end:build\\r'
 
 after_success:
-  - echo -en 'travis_fold:start:publish\\r'
+  - echo "Publish image" && echo -en 'travis_fold:start:publish\\r'
   - |
     set -e
     docker images
