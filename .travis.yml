@@ -27,15 +27,14 @@ before-install:
     sudo mv docker-compose /usr/local/bin
 
 before_script:
-  - echo -e "\e[0;33mPrepare environment\e[m" && echo -en 'travis_fold:start:prepare\\r'
   - |
+    echo -e "\e[0;33mPrepare environment\e[m"
     set -e
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
     sh .dockerhub
     # check docker versions
     docker version
     docker-compose version
-  - echo -en 'travis_fold:start:prepare\\r'
 
 script:
   - echo -e "\e[0;33mBuild docker image REPO:$REPO COMMIT:$COMMIT TAG:$TAG GIT_TAG:$GIT_TAG BUILD_NUMBER:$TRAVIS_BUILD_NUMBER\e[m" && echo -en 'travis_fold:start:build\\r'
@@ -51,11 +50,10 @@ script:
   - echo -en 'travis_fold:end:build\\r'
 
 after_success:
-  - echo -e "\e[0;33mPublish image\e[m" && echo -en 'travis_fold:start:publish\\r'
   - |
+    echo -e "\e[0;33mPublish image\e[m"
     set -e
     docker images
     [[ "$TAG" != "latest" ]] && docker push $REPO
     echo Success
-  - echo -en 'travis_fold:start:publish\\r'
 
