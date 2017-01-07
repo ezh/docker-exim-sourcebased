@@ -25,15 +25,15 @@ before-install:
     curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
     chmod +x docker-compose
     sudo mv docker-compose /usr/local/bin
-    # check docker versions
-    docker version
-    docker-compose version
 
 before_script:
   - |
     set -e
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
     sh .dockerhub
+    # check docker versions
+    docker version
+    docker-compose version
 
 script:
   - |
