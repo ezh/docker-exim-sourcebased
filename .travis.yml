@@ -28,7 +28,7 @@ before-install:
 
 before_script:
   - |
-    echo -e "\e[0;33mPrepare environment\e[m"
+    # Prepare environment
     set -e
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
     sh .dockerhub
@@ -51,7 +51,7 @@ script:
 
 after_success:
   - |
-    echo -e "\e[0;33mPublish image\e[m"
+    # Publish image
     set -e
     docker images
     [[ "$TAG" != "latest" ]] && docker push $REPO
