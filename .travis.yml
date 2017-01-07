@@ -20,6 +20,7 @@ services:
 
 before-install:
   - |
+    set -e
     sudo rm /usr/local/bin/docker-compose
     curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
     chmod +x docker-compose
@@ -51,7 +52,6 @@ after_success:
   - |
     set -e
     docker images
-    if [ "$TRAVIS_SECURE_ENV_VARS" = "true" -a  "$TRAVIS_PULL_REQUEST" == "false" ]; then
-      [[ "$TAG" != "latest" ]] && docker push $REPO
-    fi
+    [[ "$TAG" != "latest" ]] && docker push $REPO
+    echo Success
 
