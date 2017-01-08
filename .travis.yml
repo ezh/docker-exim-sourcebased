@@ -12,7 +12,7 @@ env:
     - "COMMIT=${TRAVIS_COMMIT::8}"
     - "REPO=ezh1k/exim"
     - "TAG=$(if [ \"$TRAVIS_BRANCH\" == \"master\" ]; then echo \"latest\"; else echo $TRAVIS_BRANCH ; fi)"
-    - "GIT_TAG=$(git describe --tags --abbrev=0)"
+    - "GIT_TAG=$(git describe --tags --abbrev=0 || git describe --always)"
     - "DOCKER_VERSION=1.12.3"
     - "DOCKER_COMPOSE_VERSION=1.8.1"
 
@@ -31,6 +31,7 @@ before_script:
   - |
     # Prepare environment
     set -e
+    echo $DOCKERHUB | base64 -d > .dockerhub.enc
     openssl aes-256-cbc -K $encrypted_b04a9de20608_key -iv $encrypted_b04a9de20608_iv -in .dockerhub.enc -out .dockerhub -d
     sh .dockerhub
     # check docker versions
