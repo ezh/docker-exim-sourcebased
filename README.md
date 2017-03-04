@@ -6,7 +6,7 @@ Docker compose source based exim SOHO configuration
 
 EXIM build from source from https://github.com/exim/exim
 
-By default it builds the stable *exim-4_87* if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
+By default it builds the stable *exim-4_88* if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
 
 [Hint #1](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker/Dockerfile#L30),
 [Hint #2](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker-compose.yml#L7)
