@@ -1,5 +1,9 @@
 version: '2'
 services:
   exim:
+    build:
+      context: docker
+      args:
+          version: exim-4_88
     image: exim:latest
     restart: "no"
