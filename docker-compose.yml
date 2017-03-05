@@ -1,7 +1,8 @@
 version: '2'
 services:
   exim:
-    image: ezh1k/exim
     environment:
       - USER_ID=900
       - GROUP_ID=900
+    image: ezh1k/exim
+    restart: unless-stopped
