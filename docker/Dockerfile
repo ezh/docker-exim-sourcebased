@@ -29,7 +29,7 @@ RUN set -x && \
     cd /opt/exim/ && git init && git remote add -t master -f origin https://github.com/exim/exim && \
     git checkout ${version} && cd /opt/exim/src && make && make install && \
     rm -rf /opt/exim && \
-    apt-get purge -y git ca-certificates wget automake autoconf pandoc libtool pkg-config gcc && \
+    apt-get purge -y git ca-certificates wget automake autoconf pkg-config gcc && \
     chmod a+x /entrypoint.sh
 
 VOLUME ["/etc/exim", "/var/spool/exim"]
