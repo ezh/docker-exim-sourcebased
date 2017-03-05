@@ -1,9 +1,7 @@
 version: '2'
 services:
   exim:
-    build:
-      context: docker
-      args:
-          version: exim-4_88
-          user_id: 900
-    restart: "always"
+    image: ezh1k/exim
+    environment:
+      - USER_ID=900
+      - GROUP_ID=900

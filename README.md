@@ -2,7 +2,7 @@ docker-exim-sourcebased
 =======================
 [![Build Status](https://travis-ci.org/ezh/docker-exim-sourcebased.png?branch=master)](https://travis-ci.org/ezh/docker-exim-sourcebased) [![Pulls](https://img.shields.io/docker/pulls/ezh1k/exim.svg)](https://hub.docker.com/r/ezh1k/exim/) [![Releases](https://img.shields.io/github/release/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/releases) [![License](https://img.shields.io/github/license/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/blob/master/LICENSE) 
 
-Docker compose source based exim SOHO configuration
+Docker compose source based exim SOHO configuration.
 
 EXIM build from source from https://github.com/exim/exim
 
@@ -18,13 +18,17 @@ Execution
 
 EXIM executed directly as PID 1 process with logging `main` and `reject` log to `STDOUT`, and panic log to `STDERR`.
 
+Environment
+-----------
 
-Arguments
+You may provide exim user id with USER_ID environment variable and group id with GROUP_ID one.
+
+Build arguments
 ---------
 
-You may set exim version via `version` argument
+You may set exim version via `version` argument.
 
-You may set UID for exim user via `user_id` argument
+You may set UID for exim user via `user_id` argument.
 
 Build parameters
 ----------------

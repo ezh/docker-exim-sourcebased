@@ -28,7 +28,7 @@ RUN set -x && \
     ln -sf /dev/stderr /var/log/exim_panic && \
     cd /opt/exim/ && git init && git remote add -t master -f origin https://github.com/exim/exim && \
     git checkout ${version} && cd /opt/exim/src && make && make install && \
-    rm -rf /opt/exim && \
+    rm -rf /opt/exim && cd / && \
     apt-get purge -y git ca-certificates wget automake autoconf pkg-config gcc && \
     chmod a+x /entrypoint.sh
 
