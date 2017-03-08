@@ -6,7 +6,7 @@ Source based Exim on Debian Jessie.
 
 EXIM build from source from https://github.com/exim/exim
 
-By default it builds the stable *exim-4_89* if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
+By default it builds the stable [![Releases](https://img.shields.io/github/release/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/releases) if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
 
 [Hint #1](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker/Dockerfile#L30),
 [Hint #2](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker-compose.travis.yml#L7)
