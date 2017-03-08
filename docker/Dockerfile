@@ -9,14 +9,13 @@ RUN set -x && \
     apt-get clean && \
     rm -rf /tmp/* /var/lib/apt/lists/* /var/tmp/* /download/directory && \
     mkdir -p /etc/exim && \
-    mkdir -p /opt/exim/scr/Local && \
     mkdir -p /usr/lib/exim/lookups && \
     mkdir -p /var/spool/exim && \
     cd /opt && git clone --depth=1 https://github.com/LynxChaus/libsrs-alt && \
     cd libsrs-alt && ./configure && make && make install && cp /usr/local/lib/libsrs* /usr/lib/ && \
     rm -rf /opt/libsrs-alt
 
-COPY Makefile /opt/exim/src/Local/
+COPY Makefile /tmp/
 COPY entrypoint.sh /
 
 ARG version=master
@@ -26,8 +25,9 @@ RUN set -x && \
     ln -sf /dev/stdout /var/log/exim_main && \
     ln -sf /dev/stdout /var/log/exim_reject && \
     ln -sf /dev/stderr /var/log/exim_panic && \
-    cd /opt/exim/ && git init && git remote add -t master -f origin https://github.com/exim/exim && \
-    git checkout ${version} && cd /opt/exim/src && make && make install && \
+    cd /opt && git clone --branch ${version} --single-branch --depth 1 https://github.com/exim/exim && \
+    mkdir /opt/exim/src/Local && mv /tmp/Makefile /opt/exim/src/Local/Makefile && \
+    cd /opt/exim/src && make && make install && \
     rm -rf /opt/exim && cd / && \
     apt-get purge -y git ca-certificates wget automake autoconf pkg-config gcc && \
     chmod a+x /entrypoint.sh
