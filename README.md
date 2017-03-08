@@ -1,15 +1,15 @@
 docker-exim-sourcebased
 =======================
-[![Build Status](https://travis-ci.org/ezh/docker-exim-sourcebased.png?branch=master)](https://travis-ci.org/ezh/docker-exim-sourcebased) [![Pulls](https://img.shields.io/docker/pulls/ezh1k/exim.svg)](https://hub.docker.com/r/ezh1k/exim/) [![Releases](https://img.shields.io/github/release/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/releases) [![License](https://img.shields.io/github/license/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/blob/master/LICENSE) 
+[![Build Status](https://travis-ci.org/ezh/docker-exim-sourcebased.png?branch=master)](https://travis-ci.org/ezh/docker-exim-sourcebased) [![Pulls](https://img.shields.io/docker/pulls/ezh1k/exim.svg)](https://hub.docker.com/r/ezh1k/exim/) [![Releases](https://img.shields.io/github/release/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/releases) [![License](https://img.shields.io/github/license/ezh/docker-exim-sourcebased.svg)](https://github.com/ezh/docker-exim-sourcebased/blob/master/LICENSE)
 
-Docker compose source based exim SOHO configuration.
+Source based Exim on Debian Jessie.
 
 EXIM build from source from https://github.com/exim/exim
 
-By default it builds the stable *exim-4_88* if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
+By default it builds the stable *exim-4_89* if you use docker compose and latest unstable *master* if you build directly from Dockerfile.
 
 [Hint #1](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker/Dockerfile#L30),
-[Hint #2](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker-compose.yml#L7)
+[Hint #2](https://github.com/ezh/docker-exim-sourcebased/blob/master/docker-compose.travis.yml#L7)
 
 Image is based on `debian/jessie`, the same as an official Jenkis docker container.
 
