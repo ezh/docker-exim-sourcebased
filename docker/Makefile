@@ -496,6 +496,10 @@ EXPERIMENTAL_DANE=yes
 # Uncomment the following to include extra information in fail DSN message (bounces)
 EXPERIMENTAL_DSN_INFO=yes
 
+# Disable EXPERIMENTAL_INTERNATIONAL
+# Fix error: utf8 support required but not offered for forwarding
+EXPERIMENTAL_INTERNATIONAL=no
+
 ###############################################################################
 #                 THESE ARE THINGS YOU MIGHT WANT TO SPECIFY                  #
 ###############################################################################
