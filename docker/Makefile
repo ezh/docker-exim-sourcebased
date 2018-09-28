@@ -462,6 +462,7 @@ EXPERIMENTAL_DCC=yes
 # you may have to edit the CFLAGS and LDFLAGS lines.
 
 EXPERIMENTAL_SPF=yes
+SUPPORT_SPF=yes
 CFLAGS  += -I/usr/local/include
 LDFLAGS += -lspf2
 
@@ -476,9 +477,9 @@ LDFLAGS += -lsrs_alt
 
 # Uncomment the following line to add DMARC checking capability, implemented
 # using libopendmarc libraries.  You must have SPF support enabled also.
-#EXPERIMENTAL_DMARC=yes
-#CFLAGS += -I/usr/local/include
-#LDFLAGS += -lopendmarc
+EXPERIMENTAL_DMARC=yes
+CFLAGS += -I/usr/local/include
+LDFLAGS += -lopendmarc
 
 # Uncomment the following lines to add Brightmail AntiSpam support. You need
 # to have the Brightmail client SDK installed. Please check the experimental
